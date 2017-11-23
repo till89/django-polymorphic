@@ -59,7 +59,7 @@ def translate_polymorphic_Q_object(queryset_model, potential_q_object, using=DEF
         for i in range(len(node.children)):
             child = node.children[i]
 
-            if type(child) == tuple:
+            if isinstance(child, (tuple, list)):
                 # this Q object child is a tuple => a kwarg like Q( instance_of=ModelB )
                 key, val = child
                 new_expr = _translate_polymorphic_filter_definition(my_model, key, val, using=using)
